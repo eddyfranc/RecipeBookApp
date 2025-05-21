@@ -1,75 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Recipe Book App</title>
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- jQuery CDN -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Page</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="index.js" defer></script>
 </head>
-<body class="bg-gray-100 min-h-screen flex flex-col">
-  <!-- Navigation -->
-  <nav class="bg-blue-600 text-white p-4">
-    <div class="container mx-auto flex justify-between items-center">
-      <h1 class="text-xl font-bold">Recipe Book</h1>
-      <ul class="flex space-x-4">
-        <li><a href="#home" class="hover:underline" aria-label="Home">Home</a></li>
-        <li><a href="#my-recipes" class="hover:underline" aria-label="My Recipes">My Recipes</a></li>
-        <li><a href="#shopping-list" class="hover:underline" aria-label="Shopping List">Shopping List</a></li>
-      </ul>
-    </div>
-  </nav>
+<body class="bg-gray-100 font-sans">
+    <header class="bg-blue-600 text-white p-4">
+        <h1 class="text-2xl font-bold text-center" role="heading" aria-level="1">Recipe Page</h1>
+    </header>
 
-  <!-- Main Content -->
-  <main class="container mx-auto p-4 flex-grow">
-    <!-- Home Section -->
-    <section id="home" class="mb-8">
-      <h2 class="text-2xl font-bold mb-4">Find Recipes</h2>
-      <div class="flex flex-col sm:flex-row gap-4 mb-4">
-        <input type="text" id="search-bar" class="p-2 border rounded-md flex-grow" placeholder="Search recipes (e.g., mushroom risotto)" aria-label="Search recipes">
-        <select id="category-filter" class="p-2 border rounded-md" aria-label="Filter by category">
-          <option value="all">All Categories</option>
-          <option value="Italian">Italian</option>
-          <option value="Breakfast">Breakfast</option>
-          <option value="Dessert">Dessert</option>
-        </select>
-        <button id="search-button" class="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600">Search</button>
-      </div>
-      <div id="recipe-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
-    </section>
-
-    <!-- Recipe Details Section (Hidden by Default) -->
-    <section id="recipe-details" class="hidden mb-8">
-      <button id="back-to-home" class="text-blue-500 hover:underline mb-4" aria-label="Back to home">Back to Home</button>
-      <h2 id="recipe-title" class="text-2xl font-bold mb-4"></h2>
-      <img id="recipe-image" class="w-full h-64 object-cover rounded-md mb-4" alt="Recipe image">
-      <h3 class="text-xl font-semibold mb-2">Ingredients</h3>
-      <ul id="recipe-ingredients" class="list-disc pl-5 mb-4"></ul>
-      <h3 class="text-xl font-semibold mb-2">Instructions</h3>
-      <ol id="recipe-instructions" class="list-decimal pl-5 mb-4"></ol>
-      <button id="save-recipe" class="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600">Save to Recipe Book</button>
-    </section>
-
-    <!-- My Recipes Section -->
-    <section id="my-recipes" class="hidden mb-8">
-      <h2 class="text-2xl font-bold mb-4">My Recipe Book</h2>
-      <div id="saved-recipes" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
-    </section>
-
-    <!-- Shopping List Section -->
-    <section id="shopping-list" class="hidden mb-8">
-      <h2 class="text-2xl font-bold mb-4">Shopping List</h2>
-      <ul id="shopping-list-items" class="list-disc pl-5 mb-4"></ul>
-      <button id="clear-shopping-list" class="bg-red-500 text-white p-2 rounded-md hover:bg-red-600">Clear Shopping List</button>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer class="bg-gray-800 text-white p-4 text-center">
-    <p>© 2025 Recipe Book App</p>
-  </footer>
-<script src="index.js"></script>
+    <main class="container mx-auto p-4">
+        <section id="recipes-section" class="mb-8">
+            <div class="flex flex-col md:flex-row mb-4">
+                <input type="text" id="search-input" class="border p-2 rounded-l-md flex-grow" placeholder="Search for recipes" aria-label="Search recipes">
+                <button id="search-btn" class="bg-blue-600 text-white p-2 rounded-r-md hover:bg-blue-700" aria-label="Search">Search</button>
+            </div>
+            <div class="mb-4">
+                <label for="category-filter" class="mr-2">Filter by Category:</label>
+                <select id="category-filter" class="border p-2 rounded" aria-label="Filter recipes by category">
+                    <option value="all">All</option>
+                    <option value="Italian">Italian</option>
+                    <option value="Mexican">Mexican</option>
+                    <option value="Asian">Asian</option>
+                    <option value="American">American</option>
+                </select>
+            </div>
+            <div id="recipes-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" role="region" aria-live="polite"></div>
+        </section>
+    </main>
 </body>
 </html>
